@@ -23,6 +23,7 @@ const Header = () => {
             <div>
                 <Link className="btn btn-ghost normal-case text-xl" to='/'>Home</Link>
                 <Link className="btn btn-ghost normal-case text-xl" to='/orders'>Orders</Link>
+                <Link className="btn btn-ghost normal-case text-xl" to='/profile'>Profile</Link>
                 <Link className="btn btn-ghost normal-case text-xl" to='/signup'>Signup</Link>
                 <Link className="btn btn-ghost normal-case text-xl" to='/signin'>Signin</Link>
             </div>
@@ -34,7 +35,7 @@ const Header = () => {
                         <button className="btn btn-ghost normal-case text-xl" onClick={handelSignout}>Signout</button>
                     </> :
                         <button className='btn btn-xs'>
-                            <Link to='/signin'>Please Signin!</Link>
+                            <Link className="text-green-400" to='/signin'>Please Signin!</Link>
                         </button>
                 }
             </div>

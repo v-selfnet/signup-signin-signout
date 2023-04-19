@@ -4,9 +4,14 @@ import { AuthContext } from './AuthProvider';
 import { Navigate } from 'react-router-dom';
 
 const PrivateRoute = ({children}) => {
-    const {user} = useContext(AuthContext);
+    const {user, loading} = useContext(AuthContext);
     console.log('private route:', user)
 
+    // loading stop route page signin
+    if(loading){
+        return <progress className="progress w-56"></progress>
+    }
+    
     if(user){
         return children;
     }

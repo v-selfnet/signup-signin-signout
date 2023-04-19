@@ -6,6 +6,9 @@ export const AuthContext = createContext(null);
 const auth = getAuth(app);
 
 const AuthProvider = ({children}) => {
+
+    const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true);
   
     // signup
     const createUser = (email, password) => {
@@ -18,11 +21,11 @@ const AuthProvider = ({children}) => {
     }
     
     // show user information
-    const [user, setUser] = useState(null);
     useEffect( () => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             console.log('Rubel:', currentUser);
             setUser(currentUser);
+            setLoading(false)
         });
         return () => unsubscribe(); // stop observation
     }, []);
@@ -32,7 +35,13 @@ const AuthProvider = ({children}) => {
         return signOut(auth)
     }
 
-    const authInfo = {user, createUser, signIn, logOut};
+    const authInfo = {
+        user, 
+        loading,
+        createUser, 
+        signIn, 
+        logOut
+    };
 
     return (
         <AuthContext.Provider value={authInfo}>
