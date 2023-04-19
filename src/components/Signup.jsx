@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { AuthContext } from './AuthProvider';
 
 const Signup = () => {
-    const {createUser} = useContext(AuthContext);
+    const { createUser } = useContext(AuthContext);
     // console.log(createUser)
 
     const handelSignup = event => {
@@ -14,12 +14,12 @@ const Signup = () => {
         console.log(name, email, password);
 
         createUser(email, password)
-        .then(result => {
-            const newUser = result.user;
-            console.log(newUser);
-            form.reset();
-        })
-        .catch(error => console.error(error.message, error.code))
+            .then(result => {
+                const newUser = result.user;
+                console.log(newUser);
+                form.reset();
+            })
+            .catch(error => console.error(error.message, error.code))
     }
 
 

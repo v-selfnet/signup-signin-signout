@@ -4,7 +4,7 @@ import { AuthContext } from './AuthProvider';
 
 const Signin = () => {
 
-    const {signIn} = useContext(AuthContext);
+    const { signIn } = useContext(AuthContext);
 
     const handelSignin = event => {
         event.preventDefault();
@@ -14,12 +14,12 @@ const Signin = () => {
         console.log(email, password);
 
         signIn(email, password)
-        .then(result => {
-            const loggedUser = result.user;
-            console.log('Signin Success!!!', loggedUser);
-            form.reset();
-        })
-        .catch(error => console.error(error.message, error.code))
+            .then(result => {
+                const loggedUser = result.user;
+                console.log('Signin Success!!!', loggedUser);
+                form.reset();
+            })
+            .catch(error => console.error(error.message, error.code))
     }
     return (
         <div className="hero min-h-screen bg-base-200">
